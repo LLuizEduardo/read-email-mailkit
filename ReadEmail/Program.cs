@@ -1,6 +1,11 @@
 ﻿using ReadEmail;
+using System.Threading;
+using System;
 
-var email = new Email(iMAP_HOST: "outlook.office365.com", iMAP_USER: "ribeiro12369@hotmail.com", iMAP_PASSWORD: ENV.PASSWORD);
+Config config = new Config();
+string[] cred = config.tratar();
+var email = new Email(iMAP_HOST: "mail2-2016.aec.com.br", iMAP_USER: cred[0], iMAP_PASSWORD: cred[1]);
+
 await email.Connect();
 var mesages = email.GetMessages();
 

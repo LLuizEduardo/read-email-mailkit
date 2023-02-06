@@ -49,6 +49,15 @@ namespace ReadEmail
                 var message = ImapClient.Inbox.GetMessage(uuid);
                 messages.Add(message);
                 ImapClient.Inbox.AddFlags(uuid, MessageFlags.Seen, true);
+
+
+                //TRATAR
+                string conteudo = message.TextBody;
+                string[] valores = conteudo.Split(":");
+                List<string> vores = new List<string>();
+
+                string token = valores[2].Substring(0,7);
+                Console.WriteLine(token);
             }
 
             return messages;
